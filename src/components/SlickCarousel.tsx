@@ -1,4 +1,5 @@
 import Slider, { Settings } from "react-slick";
+import { CalendarItem } from "./CalendarItem";
 export const SlockCarousel = () => {
     const settings: Settings = {
       dots: false,
@@ -12,48 +13,20 @@ export const SlockCarousel = () => {
       <div className="container">
         <h2> Single Item</h2>
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>          
-                </div>
-                <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>          
-          </div>
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
+                <CalendarItem />
         </Slider>
       </div>
     );
