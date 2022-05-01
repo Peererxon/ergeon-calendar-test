@@ -5,8 +5,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 45px;
-    width: 45px;
-    border-color: lightblue;
-    border: 1px solid red;
+    height: 55px;
+    width: 55px;
+}
+
+.calendarDay__today{
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
 }
