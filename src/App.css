@@ -1,8 +1,11 @@
+:root {
+    --primary: #1976d2;
+}
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding: 50px;
-    background: gray;
 }

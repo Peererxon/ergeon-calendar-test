@@ -2,7 +2,6 @@
     width: 60%;
     margin: auto;
 }
-
 .slick-prev {
     left: -40px !important;
 }
@@ -20,4 +19,5 @@
 }
 
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    color: var(--primary) !important;
 }

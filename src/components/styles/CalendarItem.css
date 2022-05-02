@@ -10,12 +10,12 @@
 }
 
 .calendarDay.active {
-    border: 1px solid red
+    border: 1px solid var( --primary );
 }
 
 .calendarDay__today{
     width: 5px;
     height: 5px;
-    background-color: red;
+    background-color: var( --primary );
     border-radius: 50%;
 }
