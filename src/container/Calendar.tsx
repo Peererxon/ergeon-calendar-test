@@ -24,6 +24,7 @@ export const Calendar = () => {
   };
   /* End Menu */
 
+    //changing settings to show calendar from week to month by the calendarOption state
     const settings: Settings = {
       dots: false,
       infinite: false,
@@ -36,14 +37,17 @@ export const Calendar = () => {
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />
   };
+
+  /**
+   * 
+   * @description compare the days with the days selected to watch who match
+   */
   const handleSelectedDay = (daySelected: string) => {
-    console.log(daySelected);
    const newState =  actualMonthState.map((dayOfMonth, index) => {
       return (
         daySelected === (`${dayOfMonth.dayName}/${dayOfMonth.dayNumber}`) ? { ...dayOfMonth, daySelected: true } :  { ...dayOfMonth, daySelected: false }
       )
     })
-    console.log(newState);
     
     setActualMonthState(newState)
   }
@@ -74,6 +78,7 @@ export const Calendar = () => {
     );
 }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleSelectedDayMemo = useCallback( handleSelectedDay,[]) // to avoid re-renders into the sliders items
   
     return (
