@@ -9,6 +9,10 @@
     width: 55px;
 }
 
+.calendarDay.active {
+    border: 1px solid red
+}
+
 .calendarDay__today{
     width: 5px;
     height: 5px;
