@@ -1,3 +1,9 @@
+.calendarWrapper{
+    height: 100px;
+    width: 100px;
+    padding: 20px;
+}
+
 .calendarDay{
     border-radius: 50%;
     padding: 12px;
@@ -7,10 +13,16 @@
     align-items: center;
     height: 55px;
     width: 55px;
+    position: relative;
+    -webkit-transition: 1s ease-in-out;
+    -moz-transition: 1s ease-in-out;
+    -o-transition: 1s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .calendarDay.active {
-    border: 1px solid var( --primary );
+    transform: perspective(400px) translateZ(50px);
+    outline: 1px solid var( --primary );
 }
 
 .calendarDay__today{
@@ -18,4 +30,18 @@
     height: 5px;
     background-color: var( --primary );
     border-radius: 50%;
+    position: absolute;
+    top: 15px;
+}
+
+time {
+    font-family: 'Radio Canada', sans-serif;
+}
+
+.calendarDay__dayTitle{
+    font-weight: 400;
+}
+
+.calendarDay__dayNumber{
+    font-weight: 600;
 }

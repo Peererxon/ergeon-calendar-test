@@ -2,6 +2,24 @@
     width: 60%;
     margin: auto;
 }
+
+.calendarOptions{
+    display: flex;
+    flex: 1;
+    font-family: 'Radio Canada', sans-serif;
+}
+
+.calendarOptions__title{
+    flex: 0.5;
+}
+
+.calendarOptions__menu{
+    flex: 0.5;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
 .slick-prev {
     left: -40px !important;
 }

@@ -5,31 +5,37 @@ import { useCallback, useState } from "react";
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRight from '@mui/icons-material/ArrowCircleRight'
 import { actualMonthDays, actualMonthName, todayFormatted } from "../utils/ActualMonth";
+import { Button, Menu, MenuItem } from "@mui/material";
+import CalendarMonthTwoTone from "@mui/icons-material/CalendarMonthTwoTone";
 
 
 export const Calendar = () => {
   const [actualMonthState, setActualMonthState] = useState(actualMonthDays)
+  /* Menu */
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [calendarOption, setCalendarOption] = useState<'Weekly' | 'Monthly'>('Monthly')
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = (setting?: 'Weekly' | 'Monthly') => {
+    setCalendarOption(setting ? setting : calendarOption )
+    setAnchorEl(null);
+  };
+  /* End Menu */
 
     const settings: Settings = {
       dots: false,
       infinite: false,
       speed: 500,
-      slidesToShow: 7,
-      slidesPerRow: 1,
+      slidesToShow: calendarOption === 'Weekly' ? 7 : 1,
+      slidesPerRow: calendarOption === 'Weekly' ? 1 : 7,
       slidesToScroll: 7,
-      rows: 1,
+      rows: calendarOption === 'Weekly' ? 1 : 5,
       arrows: true,
       nextArrow: <NextArrow />,
       prevArrow: <PrevArrow />
   };
-  
-  /* Month */
-  /* 
-      slidesToShow: 1,
-      slidesPerRow: 7,
-      slidesToScroll: 7,
-      rows: 5,
-   */
   const handleSelectedDay = (daySelected: string) => {
     console.log(daySelected);
    const newState =  actualMonthState.map((dayOfMonth, index) => {
@@ -53,26 +59,67 @@ export const Calendar = () => {
         fontSize={ 'large' }
       />
     );
-}
+  }
   
-function NextArrow(props: any) {
-  const { className, style, onClick } = props;
-  return (
-    <ArrowCircleRight
-      onClick={onClick}
-      className={className}
-      color='primary'
-      style={{ ...style }}
-      fontSize={ 'large' }
-    />
-  );
+  function NextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <ArrowCircleRight
+        onClick={onClick}
+        className={className}
+        color='primary'
+        style={{ ...style }}
+        fontSize={ 'large' }
+      />
+    );
 }
 
   const handleSelectedDayMemo = useCallback( handleSelectedDay,[]) // to avoid re-renders into the sliders items
   
     return (
       <div className="container">
-        <h2> {actualMonthName}</h2>
+        <div className="calendarOptions">
+          <div className="calendarOptions__title">
+           <h1> {actualMonthName} </h1> 
+          </div>
+          <div className="calendarOptions__menu">
+            <div>
+              <Button
+                id="calendar-settings"
+                aria-controls={open ? 'demo-positioned-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+              >
+                Options
+              </Button>
+              <Menu
+                id="demo-positioned-menu"
+                aria-labelledby="calendar-settings"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={ () => handleClose()}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem onClick={() => handleClose('Weekly')}>
+                  <Button variant="outlined" endIcon={<CalendarMonthTwoTone />}> Weekly </Button>
+                </MenuItem>
+                <MenuItem onClick={() => handleClose('Monthly')}>
+                  <Button variant="outlined" endIcon={<CalendarMonthTwoTone />}> Monthly </Button>
+                </MenuItem>
+              </Menu>
+            </div>
+
+          </div>
+            
+        </div>
         <Slider {...settings}>
           
             {
